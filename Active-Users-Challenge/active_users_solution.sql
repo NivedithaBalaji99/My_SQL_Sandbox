@@ -1,8 +1,8 @@
-#CREATE DATABASE practice_questions
-#USE practice_questions
-#DROP TABLE IF EXISTS Logins;
-#DROP TABLE IF EXISTS Users;
-/*
+--CREATE DATABASE practice_questions
+--USE practice_questions
+--DROP TABLE IF EXISTS Logins;
+--DROP TABLE IF EXISTS Users;
+
 CREATE TABLE Users (
     user_id INT PRIMARY KEY,
     name VARCHAR(50)
@@ -13,8 +13,8 @@ CREATE TABLE Logins (
     user_id INT,
     login_date DATE
 );
-*/
-/*
+
+
 INSERT INTO Users (user_id, name) VALUES
 (1, 'Alice'),
 (2, 'Bob'),
@@ -30,7 +30,7 @@ INSERT INTO Logins (user_id, login_date) VALUES
 (3, '2026-06-01'), -- Charlie logged in twice on the SAME day (Not Active)
 (4, '2026-06-01'),
 (4, '2026-06-05'); -- David logged in 4 days apart (Active!)
-*/
+
 
 /*
 select distinct user_id,name from (
@@ -40,7 +40,7 @@ order by u.user_id,login_date
 )a where datediff(nxt_date,a.login_date) between 1 and 7
 */
 
-/*
+
 
 select distinct user_id,name from (
 select u.*,login_date,lead(login_date)over (partition by u.user_id order by login_date) nxt_date from users u 
@@ -49,7 +49,7 @@ select u.*,login_date,lead(login_date)over (partition by u.user_id order by logi
 )a where datediff(nxt_date,a.login_date) between 1 and 7
 order by user_id
 
-*/
+
 
 
 
